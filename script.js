@@ -23,62 +23,62 @@ const quizData = [
         d: "Jupiter",
         correct: "b",
     },
-    {
-        question: "Who painted the Mona Lisa?",
-        a: "Leonardo da Vinci",
-        b: "Pablo Picasso",
-        c: "Vincent van Gogh",
-        d: "Michelangelo",
-        correct: "a",
-    },
-    {
-        question: "What is the chemical symbol for water?",
-        a: "Wt",
-        b: "H2O",
-        c: "Co",
-        d: "Ho",
-        correct: "b",
-    },
-    {
-        question: "Who discovered penicillin?",
-        a: "Alexander Fleming",
-        b: "Marie Curie",
-        c: "Isaac Newton",
-        d: "Albert Einstein",
-        correct: "a",
-    },
-    {
-        question: "What is the largest mammal in the world?",
-        a: "Elephant",
-        b: "Blue Whale",
-        c: "Giraffe",
-        d: "Hippopotamus",
-        correct: "b",
-    },
-    {
-        question: "Who is known as the father of modern physics?",
-        a: "Isaac Newton",
-        b: "Albert Einstein",
-        c: "Galileo Galilei",
-        d: "Niels Bohr",
-        correct: "b",
-    },
-    {
-        question: "What is the smallest country in the world?",
-        a: "Monaco",
-        b: "Vatican City",
-        c: "San Marino",
-        d: "Nauru",
-        correct: "b",
-    },
-    {
-        question: "What is the currency of Japan?",
-        a: "Yuan",
-        b: "Euro",
-        c: "Dollar",
-        d: "Yen",
-        correct: "d",
-    },
+    // {
+    //     question: "Who painted the Mona Lisa?",
+    //     a: "Leonardo da Vinci",
+    //     b: "Pablo Picasso",
+    //     c: "Vincent van Gogh",
+    //     d: "Michelangelo",
+    //     correct: "a",
+    // },
+    // {
+    //     question: "What is the chemical symbol for water?",
+    //     a: "Wt",
+    //     b: "H2O",
+    //     c: "Co",
+    //     d: "Ho",
+    //     correct: "b",
+    // },
+    // {
+    //     question: "Who discovered penicillin?",
+    //     a: "Alexander Fleming",
+    //     b: "Marie Curie",
+    //     c: "Isaac Newton",
+    //     d: "Albert Einstein",
+    //     correct: "a",
+    // },
+    // {
+    //     question: "What is the largest mammal in the world?",
+    //     a: "Elephant",
+    //     b: "Blue Whale",
+    //     c: "Giraffe",
+    //     d: "Hippopotamus",
+    //     correct: "b",
+    // },
+    // {
+    //     question: "Who is known as the father of modern physics?",
+    //     a: "Isaac Newton",
+    //     b: "Albert Einstein",
+    //     c: "Galileo Galilei",
+    //     d: "Niels Bohr",
+    //     correct: "b",
+    // },
+    // {
+    //     question: "What is the smallest country in the world?",
+    //     a: "Monaco",
+    //     b: "Vatican City",
+    //     c: "San Marino",
+    //     d: "Nauru",
+    //     correct: "b",
+    // },
+    // {
+    //     question: "What is the currency of Japan?",
+    //     a: "Yuan",
+    //     b: "Euro",
+    //     c: "Dollar",
+    //     d: "Yen",
+    //     correct: "d",
+    // },
 ];
 
 // creation of variables
@@ -100,7 +100,7 @@ function loadQuiz() {
 
     deselectAnswers()
 
-    const currentQuizData = (quizData  [currentQuiz]);
+    const currentQuizData = (quizData[currentQuiz]);
     questionEl.innerHTML = currentQuizData.question;
 
     a_text.innerHTML = currentQuizData.a;
@@ -123,29 +123,71 @@ function getSelected() {
         }
     });
     return answer
-}
-+
+} 
+
 submitBtn.addEventListener("click", () => {
     const answer = getSelected();
-    if (answer) {
+    if (!answer) {
+        alert("please an answer")
+    }
+
         if (answer === quizData[currentQuiz].correct) {
             score++
         }
+
+        // const currentQuizData = quizData[currentQuiz]
+
+        if(answer === quizData[currentQuiz].correct){
+            alert("correct answer");
+        } else{
+            alert("Wrong answer")
+        }
+
         currentQuiz++
         if (currentQuiz < quizData.length) {
             loadQuiz()
         } else{
+
             quiz.innerHTML = 
             `<h2>You answered ${score} / ${quizData.length} questions correctly </h2>
+           
             <button onclick="location.reload()" >Reload</button>
             `
-        }
-    }
+        }       
+    
+    
 })
+
+
+function sumArray(numbers) {
+    const sum = numbers.reduce((acc, num) => acc + num,0)
+    console.log(`The sum of the numbers in the array is ${sum}`);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // if nothing is selected, it should print something
 // print out the wrong and correct answers
-// 
+
+//  if (score < 5) {
+//     quiz.innerHTML =`
+//     <h3> you have scored less than 5</h3>
+//     <h1>Fail!!!</h1>
+//     `
+    
+// }
 
 
